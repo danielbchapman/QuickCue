@@ -3,12 +3,30 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <h1>Quick Cue List</h1>
 
-  {{> hello}}
+  <div>
+  	<h2>Hi! I'm the controls, you know, add, print, those guys...</h2>
+  	<button>Print</button>
+  </div>
+  <!--Cue List here -->
+  {{#each cues}}
+  	{{> cue}}
+  {{/each}}
+
+  <hr />
+  {{> cue}}
+
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="cue">
+	<div class="cue">
+		<label class="cue-number">{{number}}</label>
+		<label class="cue-label">{{label}}</label>
+		<label class="cue-description">{{description}}</label>
+		<label class="cue-placement">{{placement}}</label>
+		<button>Note</button>
+		<button>Work Note</button>
+		<button>Focus Note</button>
+	</div>
 </template>

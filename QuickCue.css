@@ -1,1 +1,14 @@
 /* CSS declarations go here */
+.cue label.cue-number {
+	color: red;
+}
+
+.cue label.cue-label {
+	color: green;
+}
+.cue label.cue-description {
+	color: blue;
+}
+.cue label.cue-placement {
+	color: orange;
+}
