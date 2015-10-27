@@ -5,12 +5,48 @@
 <body>
   <h1>Quick Cue List</h1>
 
-  <div>
+  <div class="controls">
   	<h2>Hi! I'm the controls, you know, add, print, those guys...</h2>
   	<button>Print</button>
+  	<br/>
+  	<form class="new-cue">
+  		<table>
+  			<tbody>
+  				<tr>
+  					<th>Number</th>
+  					<th>Label</th>
+  					<th>Description</th>
+  					<th>Placement</th>
+  				</tr>
+  				<tr>
+  					<td>
+  						<input placeholder="Number" type="text" name="cueNumber" />
+  					</td>
+  					<td>
+  						<input placeholder="Label" type="text" name="cueLabel" />
+  					</td>
+					<td>
+  						<input placeholder="Description" type="text" name="cueDescription" />
+  					</td>
+					<td>
+  						<input placeholder="Placement" type="text" name="cuePlacement" />
+  					</td>
+  				</tr>
+
+  			</tbody>
+  		</table>
+  		
+  		<input placeholder="cue number" type="text" name="addCue" />
+  		<input placeholder="cue number" type="text" name="addCue" />
+  		<input placeholder="cue number" type="text" name="addCue" />
+  		<input type="submit">Add Cue</input>
+  	</form>
   </div>
-  
+
   <!--Cue List here -->
+  <div>
+ 	<label>Total Cues: {{cueCount}}</label>
+  </div>
   {{#each cues}}
   	{{> cue}}
   {{/each}}

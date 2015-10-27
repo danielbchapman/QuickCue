@@ -1,8 +1,47 @@
+var Cues = new Mongo.Collection("cues");
+
 if (Meteor.isClient) {
   // counter starts at 0
   Session.setDefault('counter', 0);
+  //Events
+  Template.body.events({
+    "submit .new-cue" : function(event){
+      event.preventDefault();
 
+      var qNum = event.target.cueNumber.value;
+      var qLabel = event.target.cueLabel.value;
+      var qDesc = event.target.cueDescription.value;
+      var qPlace = event.target.cuePlacement.value;
+
+      console.log("cue number is " + num); 
+      if(!num){
+        return;
+      }
+
+      Cues.insert({ 
+        number : qNum,
+        label : qLabel,
+        description : qDesc,
+        placement : qPlace
+      });
+
+      event.target.cueNumber.value = "";
+      event.target.cueLabel.value = "";
+      event.target.cueDescription.value = "";
+      event.target.cuePlacement.value = "";
+    }
+  });
+  //Helpers
   Template.body.helpers({
+    cueCount : function(){
+      return -1;//Cues.count();
+    },
+    addCue: function(num){
+      Cues.insert({ number : num });
+    },
+    removeCue : function(id){
+
+    },
     cues: [
       { number: "1", 
         label: "Test Label", 
@@ -21,11 +60,6 @@ if (Meteor.isClient) {
         description: "Test Description", 
         placement: "Test Placement"}
     ]
-  });
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
-    }
   });
 
   Template.hello.events({
