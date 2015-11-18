@@ -34,9 +34,11 @@
 }
 
 .cue button.delete {
-	color: red;
 }
 
+.cue td.cue-controls {
+	width: 150px;
+}
 
 /* Table Style */
 table.cue-stack {

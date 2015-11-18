@@ -80,16 +80,16 @@
       <label>{{placement}}</label>
     </td>
 
-    <td>
-  		<button class="addNote">Note</button>
-  		<button class="addWorkNote">Work Note</button>
-  		<button class="addFocusNote">Focus Note</button>
-      <button class="remove {{#if remove}} hide {{/if}}">Remove</button>
-      <button class="restore {{#unless remove }} hide {{/unless}}">Restore</button>
+    <td class="cue-controls">
+  		<button class="addNote btn btn-default">N</button>
+  		<button class="addWorkNote btn btn-default">W</button>
+  		<button class="addFocusNote btn btn-default">F</button>
+      <button class="remove  btn btn-warning {{#if remove}} hide {{/if}}">R</button>
+      <button class="restore  btn btn-success{{#unless remove }} hide {{/unless}}">R</button>
     </td>
 
-    <td>
-      <button class="delete {{#unless remove}} hide {{/unless}}">Delete</button>
+    <td class="cue-delete">
+      <button class="delete  btn btn-danger {{#unless remove}} hide {{/unless}}">Delete</button>
     </td>
 	</tr>
 </template>
