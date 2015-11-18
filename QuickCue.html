@@ -35,11 +35,9 @@
 
   			</tbody>
   		</table>
-  		
-  		<input placeholder="cue number" type="text" name="addCue" />
-  		<input placeholder="cue number" type="text" name="addCue" />
-  		<input placeholder="cue number" type="text" name="addCue" />
-  		<input type="submit">Add Cue</input>
+  	
+      <input type="submit" value="Add Cue"/>
+
   	</form>
   </div>
 
@@ -47,20 +45,51 @@
   <div>
  	<label>Total Cues: {{cueCount}}</label>
   </div>
-  {{#each cues}}
-  	{{> cue}}
-  {{/each}}
-
+  <table class="cue-stack">
+    <thead>
+      <th>Cue</th>
+      <th>Label</th>
+      <th>Description</th>
+      <th>Placement</th>
+      <th></th>
+      <th></th>
+    </thead>
+    <tbody>
+    {{#each cues}}
+    	{{> cue}}
+    {{/each}}
+    </tbody>
+  </table>
 </body>
 
 <template name="cue">
-	<div class="cue">
-		<label class="cue-number">{{number}}</label>
-		<label class="cue-label">{{label}}</label>
-		<label class="cue-description">{{description}}</label>
-		<label class="cue-placement">{{placement}}</label>
-		<button>Note</button>
-		<button>Work Note</button>
-		<button>Focus Note</button>
-	</div>
+	<tr class="cue">
+    <td class="cue-number">
+      <label>{{number}}</label>
+    </td>
+		
+    <td class="cue-label">
+      <label>{{label}}</label>
+    </td>
+
+		<td class="cue-description">
+      <label>{{description}}</label>
+    </td>
+
+		<td class="cue-placement">
+      <label>{{placement}}</label>
+    </td>
+
+    <td>
+  		<button class="addNote">Note</button>
+  		<button class="addWorkNote">Work Note</button>
+  		<button class="addFocusNote">Focus Note</button>
+      <button class="remove {{#if remove}} hide {{/if}}">Remove</button>
+      <button class="restore {{#unless remove }} hide {{/unless}}">Restore</button>
+    </td>
+
+    <td>
+      <button class="delete {{#unless remove}} hide {{/unless}}">Delete</button>
+    </td>
+	</tr>
 </template>

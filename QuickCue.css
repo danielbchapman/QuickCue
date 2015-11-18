@@ -1,18 +1,52 @@
 /* CSS declarations go here */
-.cue label.cue-number {
-	color: red;
+/* General programatic helper classes go here, like hide, show etc... */
+.hide {
+	display:none;
 }
 
-.cue label.cue-label {
+.cue td.cue-number label{
+	display: inline-block;
+	text-align: right;
+	color: red;
+	width: 50px;
+	white-space: normal;
+	max-width: 25%;
+	min-width: 25px;
+}
+
+.cue td {
+
+}
+
+.cue td.cue-label label{
 	color: green;
 }
-.cue label.cue-description {
+.cue td.cue-description label{
 	color: blue;
 }
-.cue label.cue-placement {
+.cue td.cue-placement label {
 	color: orange;
+	max-width: 250px;
 }
 
 .controls {
 	background: #eee;
+}
+
+.cue button.delete {
+	color: red;
+}
+
+
+/* Table Style */
+table.cue-stack {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+table.cue-stack td {
+	padding:0px;
+	margin: 1px 0 3px 10px;
+	border-bottom: solid red  1px;
+	vertical-align: top;
 }

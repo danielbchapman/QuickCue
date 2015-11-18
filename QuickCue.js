@@ -1,4 +1,4 @@
-var Cues = new Mongo.Collection("cues");
+Cues = new Mongo.Collection("cues");
 
 if (Meteor.isClient) {
   // counter starts at 0
@@ -7,14 +7,14 @@ if (Meteor.isClient) {
   Template.body.events({
     "submit .new-cue" : function(event){
       event.preventDefault();
-
+      console.log("Adding Cue!")
       var qNum = event.target.cueNumber.value;
       var qLabel = event.target.cueLabel.value;
       var qDesc = event.target.cueDescription.value;
       var qPlace = event.target.cuePlacement.value;
 
-      console.log("cue number is " + num); 
-      if(!num){
+      console.log("cue number is " + qNum); 
+      if(!qNum){
         return;
       }
 
@@ -36,36 +36,55 @@ if (Meteor.isClient) {
     cueCount : function(){
       return -1;//Cues.count();
     },
-    addCue: function(num){
+    addCue: function(num){x
       Cues.insert({ number : num });
     },
     removeCue : function(id){
 
     },
-    cues: [
-      { number: "1", 
-        label: "Test Label", 
-        description: "Test Description", 
-        placement: "Test Placement"},
-      { number: "2", 
-        label: "Test Label", 
-        description: "Test Description", 
-        placement: "Test Placement"},
-      { number: "2", 
-        label: "Test Label", 
-        description: "Test Description", 
-        placement: "Test Placement"},
-      { number: "2", 
-        label: "Test Label", 
-        description: "Test Description", 
-        placement: "Test Placement"}
-    ]
+    cues: function() {
+      return Cues.find({},{ sort: {number : 1}});
+    }
+    // cues: [
+    //   { number: "1", 
+    //     label: "Test Label", 
+    //     description: "Test Description", 
+    //     placement: "Test Placement"},
+    //   { number: "2", 
+    //     label: "Test Label", 
+    //     description: "Test Description", 
+    //     placement: "Test Placement"},
+    //   { number: "2", 
+    //     label: "Test Label", 
+    //     description: "Test Description", 
+    //     placement: "Test Placement"},
+    //   { number: "2", 
+    //     label: "Test Label", 
+    //     description: "Test Description", 
+    //     placement: "Test Placement"}
+    // ]
   });
 
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
+  Template.cue.events({
+    //Notes
+    "click .addNote": function(){
+      alert("This would add a note!");
+    },
+    //Delete options
+    "click .remove": function(){
+      Cues.update(this._id, {
+        $set: { remove: true }
+      });
+      console.log("removing!");
+    },
+    "click .restore": function(){
+      Cues.update(this._id, {
+        $set: { remove: false } 
+      });
+      console.log("restoring!");
+    },
+    "click .delete": function(){
+      Cues.remove(this._id);
     }
   });
 }
