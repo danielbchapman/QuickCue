@@ -97,4 +97,22 @@
       <button class="delete  btn btn-danger {{#unless remove}} hide {{/unless}}">Delete</button>
     </div>
 	</div>
+  <div class="modal fade" id="note-{{_id}}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header"><h1> HEADER</h1></div>
+        <div class="modal-body">
+          <h1> BODY</h1>
+          {{number}}
+          <br />
+          {{label}}
+          <br />
+          {{description}}
+          <br />
+          {{placement}}
+        </div>
+        <div class="modal-footer"><h1>Footer</h1></div> 
+      </div>
+    </div>
+  </div>
 </template>

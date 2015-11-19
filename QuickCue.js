@@ -71,7 +71,7 @@ if (Meteor.isClient) {
   Template.cue.events({
     //Notes
     "click .addNote": function(){
-      alert("This would add a note!");
+      $('#note-' + this._id).modal('show');
     },
     //Delete options
     "click .remove": function(){

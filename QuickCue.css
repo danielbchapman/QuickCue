@@ -49,12 +49,15 @@
 }
 
 /* Table Style */
-table.cue-stack {
-	border-collapse: separate;
-	border-spacing: 0;
+.cue-stack {
+	
 }
 
-table.cue-stack td {
+.cue-note {
+	display: none;
+}
+
+.cue-stack .cell {
 	padding:0px;
 	margin: 1px 0 3px 10px;
 	border-bottom: solid red  1px;
