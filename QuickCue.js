@@ -29,6 +29,9 @@ if (Meteor.isClient) {
       event.target.cueLabel.value = "";
       event.target.cueDescription.value = "";
       event.target.cuePlacement.value = "";
+
+      //Pull focus back to the number input
+      $('[name="cueNumber"]').focus();
     }
   });
   //Helpers

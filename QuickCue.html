@@ -45,6 +45,12 @@
   <div>
  	<label>Total Cues: {{cueCount}}</label>
   </div>
+  <div class="cue-stack table cue">
+    {{#each cues}}
+      {{> cue}}
+    {{/each}}
+  </div>
+  <!--
   <table class="cue-stack">
     <thead>
       <th>Cue</th>
@@ -55,41 +61,40 @@
       <th></th>
     </thead>
     <tbody>
-    {{#each cues}}
-    	{{> cue}}
-    {{/each}}
+    
     </tbody>
   </table>
+-->
 </body>
 
 <template name="cue">
-	<tr class="cue">
-    <td class="cue-number">
+	<div class="row">
+    <div class="cell cue-number">
       <label>{{number}}</label>
-    </td>
+    </div>
 		
-    <td class="cue-label">
+    <div class="cell cue-label">
       <label>{{label}}</label>
-    </td>
+    </div>
 
-		<td class="cue-description">
+		<div class="cell cue-description">
       <label>{{description}}</label>
-    </td>
+    </div>
 
-		<td class="cue-placement">
+		<div class="cell cue-placement">
       <label>{{placement}}</label>
-    </td>
+    </div>
 
-    <td class="cue-controls">
+    <div class="cell cue-controls">
   		<button class="addNote btn btn-default">N</button>
   		<button class="addWorkNote btn btn-default">W</button>
   		<button class="addFocusNote btn btn-default">F</button>
       <button class="remove  btn btn-warning {{#if remove}} hide {{/if}}">R</button>
       <button class="restore  btn btn-success{{#unless remove }} hide {{/unless}}">R</button>
-    </td>
+    </div>
 
-    <td class="cue-delete">
+    <div class="cell cue-delete">
       <button class="delete  btn btn-danger {{#unless remove}} hide {{/unless}}">Delete</button>
-    </td>
-	</tr>
+    </div>
+	</div>
 </template>

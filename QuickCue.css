@@ -14,17 +14,25 @@
 	min-width: 25px;
 }
 
-.cue td {
-
+.table {
+	display: table;
 }
 
-.cue td.cue-label label{
+.row {
+	display: table-row;
+}
+
+.cell {
+	display: table-cell;
+}
+
+.cue div.cue-label label{
 	color: green;
 }
-.cue td.cue-description label{
+.cue div.cue-description label{
 	color: blue;
 }
-.cue td.cue-placement label {
+.cue div.cue-placement label {
 	color: orange;
 	max-width: 250px;
 }
@@ -36,8 +44,8 @@
 .cue button.delete {
 }
 
-.cue td.cue-controls {
-	width: 150px;
+.cue div.cue-controls {
+	width: 200px;
 }
 
 /* Table Style */
