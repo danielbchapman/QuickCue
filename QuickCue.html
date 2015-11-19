@@ -46,25 +46,18 @@
  	<label>Total Cues: {{cueCount}}</label>
   </div>
   <div class="cue-stack table cue">
+    <div class="row">
+      <div class="cell">Cue</div>
+      <div class="cell">Label</div>
+      <div class="cell">Description</div>
+      <div class="cell">Placement</div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+    </div>
     {{#each cues}}
       {{> cue}}
     {{/each}}
   </div>
-  <!--
-  <table class="cue-stack">
-    <thead>
-      <th>Cue</th>
-      <th>Label</th>
-      <th>Description</th>
-      <th>Placement</th>
-      <th></th>
-      <th></th>
-    </thead>
-    <tbody>
-    
-    </tbody>
-  </table>
--->
 </body>
 
 <template name="cue">

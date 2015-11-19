@@ -37,7 +37,7 @@ if (Meteor.isClient) {
   //Helpers
   Template.body.helpers({
     cueCount : function(){
-      return -1;//Cues.count();
+      return Cues.find({}).count();
     },
     addCue: function(num){x
       Cues.insert({ number : num });
