@@ -1,0 +1,1 @@
+Cues = new Mongo.Collection("cues");

@@ -4,6 +4,18 @@
 
 <body>
   <h1>Quick Cue List</h1>
+  <div class="nav">
+    {{>loginButtons}}
+  </div>
+  {{#unless currentUser}}
+  <div class="jumbo">
+    <h2>Please register an account</h2>
+    <p> blah blah blah...</p>]
+  </div>
+  {{/unless}}
+  {{#if currentUser}}
+
+  
 
   <div class="controls">
   	<h2>Hi! I'm the controls, you know, add, print, those guys...</h2>
@@ -43,7 +55,11 @@
 
   <!--Cue List here -->
   <div>
- 	<label>Total Cues: {{cueCount}}</label>
+ 	<label>Total Cues: ({{cueCount}})</label>
+  <div>
+    <input id="no-confirm" type="checkbox" checked="{{noConfirm}}" />
+    <label for="no-confirm">Confirm Delete</label>
+  </div>
   </div>
   <div class="cue-stack table cue">
     <div class="row">
@@ -58,6 +74,7 @@
       {{> cue}}
     {{/each}}
   </div>
+{{/if}}
 </body>
 
 <template name="cue">
@@ -82,12 +99,24 @@
   		<button class="addNote btn btn-default">N</button>
   		<button class="addWorkNote btn btn-default">W</button>
   		<button class="addFocusNote btn btn-default">F</button>
-      <button class="remove  btn btn-warning {{#if remove}} hide {{/if}}">R</button>
-      <button class="restore  btn btn-success{{#unless remove }} hide {{/unless}}">R</button>
+      {{#unless confirmDeletes}}
+        {{#if remove}}
+          <button class="restore  btn btn-success">R</button>
+        {{else}}
+          <button class="remove  btn btn-warning">R</button>
+        {{/if}}
+      {{else}}
+        <button class="delete  btn btn-danger">Delete</button>  
+      {{/unless}}
     </div>
 
     <div class="cell cue-delete">
-      <button class="delete  btn btn-danger {{#unless remove}} hide {{/unless}}">Delete</button>
+      {{#unless confirmDeletes}}
+        {{#if remove}}
+          <button class="delete  btn btn-danger">Delete</button>
+        {{/if}}
+      {{/unless}}
+      
     </div>
 	</div>
   <div class="modal fade" id="note-{{_id}}">
