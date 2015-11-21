@@ -1,30 +1,4 @@
-//Methods for the cue list
-var monkies = "";
-
-var QuickCue = {};	
-
-if(!QuickCue.Auth){
-	QuickCue.Auth = {
-		//returns null if valid
-		'validUser' : function(){
-			var userId = Meteor.userId();
-			if(!userId) {
-				throw QuickCue.Msg.AuthFail;
-			}
-			return userId;
-
-		},
-		'' : "Invalid operation: user is not authenticated"
-	};
-
-}
-
-if(!QuickCue.Msg){
-	QuickCue.Msg = {
-		AuthFail : "Invalid operation: user is not authenticated"
-	};
-}	
-
+//This file is the collection of methods used by the cue portion of the application
 Meteor.methods({
 	'addCue' : function(cue){
 		//FIXME Add validation
