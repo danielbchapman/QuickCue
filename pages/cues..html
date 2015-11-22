@@ -1,0 +1,65 @@
+<template name="cue-list-old">
+	<h1>Cue Application</h1>
+	{{>nav}}
+	{{#unless currentUser}}
+		{{>register}}
+	{{/unless}}
+	{{#if currentUser}}
+	<div class="controls">
+	<h2>Hi! I'm the controls, you know, add, print, those guys...</h2>
+	<button>Print</button>
+	<br/>
+	<form class="new-cue">
+		<table>
+			<tbody>
+				<tr>
+					<th>Number</th>
+					<th>Label</th>
+					<th>Description</th>
+					<th>Placement</th>
+				</tr>
+				<tr>
+					<td>
+						<input placeholder="Number" type="text" name="cueNumber" />
+					</td>
+					<td>
+						<input placeholder="Label" type="text" name="cueLabel" />
+					</td>
+					<td>
+						<input placeholder="Description" type="text" name="cueDescription" />
+					</td>
+					<td>
+						<input placeholder="Placement" type="text" name="cuePlacement" />
+					</td>
+				</tr>
+
+			</tbody>
+		</table>
+	
+	<input type="submit" value="Add Cue"/>
+
+  	</form>
+  </div>
+	
+  <div>
+ 	<label>Total Cues: ({{cueCount}})</label>
+  <div>
+    <input id="no-confirm" type="checkbox" checked="{{noConfirm}}" />
+    <label for="no-confirm">Confirm Delete</label>
+  </div>
+  </div>
+  <div class="cue-stack table cue">
+    <div class="row">
+      <div class="cell">Cue</div>
+      <div class="cell">Label</div>
+      <div class="cell">Description</div>
+      <div class="cell">Placement</div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+    </div>
+    {{#each cues}}
+      {{> cueItemInner}}
+    {{/each}}
+  </div>
+	{{/if}}
+</template>

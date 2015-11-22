@@ -1,0 +1,23 @@
+<template name="CueSheet">
+	<h1>Cue Sheet</h1>
+	{{#unless currentUser}}
+		<h2>Unauthorized</h2>
+		{{> goRegister }}
+	{{/unless}}
+	{{#if currentUser}}
+		{{> cueControls }}
+		<label>Total Cues: {{cueCount}}</label>
+		<!-- Confirm Delete Functionality -->
+		<div style="background: orange;">
+			<input id="no-confirm" type="checkbox" checked="{{noConfirm}}" />
+			<label for="no-confirm">Confirm Delete</label>
+  	</div>
+		<div class="cue-stack table cue">
+			{{> cueTableHeader }}
+			{{#each cues}}
+				{{> cueItem}}
+			{{/each}}
+		</div>
+		
+	{{/if}}
+</template>

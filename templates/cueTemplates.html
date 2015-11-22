@@ -1,0 +1,114 @@
+<template name="cueTableHeader">
+  <div class="row">
+    <div class="cell">Cue</div>
+    <div class="cell">Label</div>
+    <div class="cell">Description</div>
+    <div class="cell">Placement</div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+  </div>
+</template>
+
+<template name="cueItem">
+	{{> cueItemInner}}
+</template>
+
+<template name="cueItemInner">
+  <div class="row">
+    <div class="cell cue-number">
+      <label>{{number}}</label>
+    </div>
+    
+    <div class="cell cue-label">
+      <label>{{label}}</label>
+    </div>
+
+    <div class="cell cue-description">
+      <label>{{description}}</label>
+    </div>
+
+    <div class="cell cue-placement">
+      <label>{{placement}}</label>
+    </div>
+
+    <div class="cell cue-controls">
+      <button class="addNote btn btn-default">N</button>
+      <button class="addWorkNote btn btn-default">W</button>
+      <button class="addFocusNote btn btn-default">F</button>
+      {{#unless confirmDeletes}}
+        {{#if remove}}
+          <button class="restore  btn btn-success">R</button>
+        {{else}}
+          <button class="remove  btn btn-warning">R</button>
+        {{/if}}
+      {{else}}
+        <button class="delete  btn btn-danger">Delete</button>  
+      {{/unless}}
+    </div>
+
+    <div class="cell cue-delete">
+      {{#unless confirmDeletes}}
+        {{#if remove}}
+          <button class="delete  btn btn-danger">Delete</button>
+        {{/if}}
+      {{/unless}}
+      
+    </div>
+  </div>
+  <div class="modal fade" id="note-{{_id}}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header"><h1> HEADER</h1></div>
+        <div class="modal-body">
+          <h1> BODY</h1>
+          {{number}}
+          <br />
+          {{label}}
+          <br />
+          {{description}}
+          <br />
+          {{placement}}
+        </div>
+        <div class="modal-footer"><h1>Footer</h1></div> 
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="cueControls">
+  <div class="controls">
+  	<h2>Hi! I'm the controls, you know, add, print, those guys...</h2>
+  	<button>Print</button>
+  	<br/>
+  	<form class="new-cue">
+  		<table>
+  			<tbody>
+  				<tr>
+  					<th>Number</th>
+  					<th>Label</th>
+  					<th>Description</th>
+  					<th>Placement</th>
+  				</tr>
+  				<tr>
+  					<td>
+  						<input placeholder="Number" type="text" name="cueNumber" />
+  					</td>
+  					<td>
+  						<input placeholder="Label" type="text" name="cueLabel" />
+  					</td>
+					<td>
+  						<input placeholder="Description" type="text" name="cueDescription" />
+  					</td>
+					<td>
+  						<input placeholder="Placement" type="text" name="cuePlacement" />
+  					</td>
+  				</tr>
+
+  			</tbody>
+  		</table>
+  	
+      <input type="submit" value="Add Cue"/>
+
+  	</form>
+  </div>
+</template>

@@ -5,7 +5,38 @@ Session.setDefault('counter', 0);
 
 Meteor.subscribe('cueList');
 
-Template.body.events({
+Template.cueControls.events({
+	"submit .new-cue" : function(event){
+	  event.preventDefault();
+	  console.log("Adding Cue!")
+	  var qNum = event.target.cueNumber.value;
+	  var qLabel = event.target.cueLabel.value;
+	  var qDesc = event.target.cueDescription.value;
+	  var qPlace = event.target.cuePlacement.value;
+
+	  console.log("cue number is " + qNum); 
+	  if(!qNum){
+	    return;
+	  }
+
+	  Meteor.call('addCue', {
+	  	number : qNum,
+	    label : qLabel,
+	    description : qDesc,
+	    placement : qPlace
+	  });
+	  
+	  event.target.cueNumber.value = "";
+	  event.target.cueLabel.value = "";
+	  event.target.cueDescription.value = "";
+	  event.target.cuePlacement.value = "";
+
+	  //Pull focus back to the number input
+	  $('[name="cueNumber"]').focus();
+	}
+});
+
+Template.CueSheet.events({
 	"submit .new-cue" : function(event){
 	  event.preventDefault();
 	  console.log("Adding Cue!")
@@ -37,10 +68,11 @@ Template.body.events({
 	//Toggle confirm on and off
 	"click #no-confirm" : function(event){
 		Session.set("NO_CONFIRM", !Session.get("NO_CONFIRM"));
+		console.log("NO CONFRIM = " + Session.get("NO_CONFIRM"));
 	}
 });
 //Helpers
-Template.body.helpers({
+Template.CueSheet.helpers({
 	cueCount : function(){
 	  return Cues.find({}).count() || '0';
 	},
@@ -58,7 +90,7 @@ Template.body.helpers({
 	}
 	});
 
-Template.cue.events({
+Template.cueItem.events({
 	//Notes
 	"click .addNote": function(){
 	  $('#note-' + this._id).modal('show');
@@ -75,7 +107,7 @@ Template.cue.events({
 	}
 });
 
-Template.cue.helpers({
+Template.cueItemInner.helpers({
 	confirmDeletes : function(){
 		var result = Session.get("NO_CONFIRM") ? true : false;
 		return result;
