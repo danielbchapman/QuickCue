@@ -7,4 +7,15 @@ Router.route('/Instruments');
 Router.route('/', {
 	template: 'Home'
 });
+
+//Printing
+Router.route('/Print/CueSheet', {
+	name: 'PrintCues',
+	template: 'PrintCues'
+});
 console.log("registered routes");
+
+//Router Defaults
+Router.configure({
+	layoutTemplate : 'main'
+});
