@@ -63,7 +63,7 @@ Template.CueSheet.events({
 	  event.target.cuePlacement.value = "";
 
 	  //Pull focus back to the number input
-	  $('[name="cueNumber"]').focus();
+	  $(event).children('[name="cueNumber"]').focus();
 	},
 	//Toggle confirm on and off
 	"click #no-confirm" : function(event){
