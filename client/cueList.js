@@ -32,7 +32,11 @@ Template.cueControls.events({
 	  event.target.cuePlacement.value = "";
 
 	  //Pull focus back to the number input
-	  $('[name="cueNumber"]').focus();
+	  $(event.target).find('[name="cueNumber"]').focus();
+		console.log($(this) + "->" + event);
+		console.log($(this).html());
+		console.log(this);
+		console.log(event.target);	
 	}
 });
 
@@ -44,6 +48,7 @@ Template.CueSheet.events({
 	  var qLabel = event.target.cueLabel.value;
 	  var qDesc = event.target.cueDescription.value;
 	  var qPlace = event.target.cuePlacement.value;
+		var qPage = event.target.cuePlacement.value;
 
 	  console.log("cue number is " + qNum); 
 	  if(!qNum){
@@ -54,13 +59,15 @@ Template.CueSheet.events({
 	  	number : qNum,
 	    label : qLabel,
 	    description : qDesc,
-	    placement : qPlace
+	    placement : qPlace,
+			page : qPage
 	  });
 	  
 	  event.target.cueNumber.value = "";
 	  event.target.cueLabel.value = "";
 	  event.target.cueDescription.value = "";
 	  event.target.cuePlacement.value = "";
+		event.target.cuePage.value = "";
 
 	  //Pull focus back to the number input
 	  $(event).children('[name="cueNumber"]').focus();
@@ -91,18 +98,46 @@ Template.CueSheet.helpers({
 	});
 
 Template.cueItem.events({
-	//Notes
-	"click .addNote": function(){
+
+});
+
+Template.cueItemInner.events({
+	//Submit and save this row
+	"submit .row" : function(event){
+		event.preventDefault();
+		console.log(event);	
+	},
+	"blur [name='cue-number']" : function(e){
+		Meteor.call('updateCue', this._id, { number : e.target.value });	
+	},
+	"blur [name='cue-label']" : function(e){
+		Meteor.call('updateCue', this._id, { label : e.target.value });
+	},
+	"blur [name='cue-description']" : function(e){
+		Meteor.call('updateCue', this._id, { description : e.target.value });
+	},
+	"blur [name='cue-placement']" : function(e){
+		Meteor.call('updateCue', this._id, { placement : e.target.value });
+	},
+	"blur [name='cue-page']" : function(e){
+		Meteor.call('updateCue', this._id, { placement : e.target.value });
+	},
+	//Button functions
+	"click .addNote": function(e){
+		e.preventDefault();
 	  $('#note-' + this._id).modal('show');
 	},
 	//Delete options
-	"click .remove": function(){
+	"click .remove": function(e){
+		e.preventDefault();
 		Meteor.call('removeCue', this._id);
 	},
-	"click .restore": function(){
-	  	Meteor.call('restoreCue', this._id);
+	"click .restore": function(e){
+		e.preventDefault();
+	  Meteor.call('restoreCue', this._id);
 	},
-	"click .delete": function(){
+	"click .delete": function(e){
+		e.preventDefault();
 	  Meteor.call('deleteCue', this._id);
 	}
 });

@@ -26,6 +26,23 @@ Meteor.methods({
 		console.log(data);
 
 	},
+	'updateCue' : function(mongoId, setObj){
+		var userId = QuickCue.Auth.validUser();
+		if(!mongoId){
+			throw "Invalid call, the ID is null or empty";
+		}
+		if(!mongoId){
+			throw "Invalid call, the cue is null or empty";
+		}
+		//Update this specific field
+		Cues.update({
+				_id: mongoId, 
+				owner: userId
+			}, { 
+				$set : setObj
+			} 
+		)
+	},
 	'changeShow' : function(name){
 		return false;
 	},

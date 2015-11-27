@@ -4,6 +4,7 @@
     <div class="cell">Label</div>
     <div class="cell">Description</div>
     <div class="cell">Placement</div>
+    <div class="cell">Page</div>
     <div class="cell"></div>
     <div class="cell"></div>
   </div>
@@ -20,25 +21,32 @@
 <template name="cueItemInner">
   <div class="row">
     <div class="cell cue-number">
-      <label>{{number}}</label>
+      <input type="text" value="{{number}}" name="cue-number" />
     </div>
     
     <div class="cell cue-label">
-      <label>{{label}}</label>
+      <input type="text" value="{{label}}" name="cue-label" />
     </div>
 
     <div class="cell cue-description">
-      <label>{{description}}</label>
+      <input type="text" value="{{description}}" name="cue-description" />
     </div>
 
     <div class="cell cue-placement">
-      <label>{{placement}}</label>
+      <input type="text" value="{{placement}}" name="cue-placementr" />
     </div>
-
+        
+    <div class="cell cue-page">
+      <input type="text" value="{{page}}" name="cue-page" />
+    </div>
+    
     <div class="cell cue-controls">
+      <input type="submit" style="display:none;" />
       <button class="addNote btn btn-default">N</button>
+      <!--
       <button class="addWorkNote btn btn-default">W</button>
       <button class="addFocusNote btn btn-default">F</button>
+      -->
       {{#unless confirmDeletes}}
         {{#if remove}}
           <button class="restore  btn btn-success">R</button>
@@ -56,7 +64,6 @@
           <button class="delete  btn btn-danger">Delete</button>
         {{/if}}
       {{/unless}}
-      
     </div>
   </div>
   <div class="modal fade" id="note-{{_id}}">
@@ -89,6 +96,7 @@
   					<th>Label</th>
   					<th>Description</th>
   					<th>Placement</th>
+            <th>Page</th>
   				</tr>
   				<tr>
   					<td>
@@ -100,8 +108,11 @@
 					<td>
   						<input placeholder="Description" type="text" name="cueDescription" />
   					</td>
-					<td>
+					 <td>
   						<input placeholder="Placement" type="text" name="cuePlacement" />
+  					</td>
+            <td>
+  						<input placeholder="Page" type="text" name="cuePage" />
   					</td>
   				</tr>
 
