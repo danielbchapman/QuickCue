@@ -63,3 +63,11 @@
 	border-bottom: solid red  1px;
 	vertical-align: top;
 }
+
+input[type=text] {
+	background-color: rgba(0,0,0,0);
+}
+
+.cue-stack .row:nth-child(2n+3){
+	background-color: #eee;
+}
