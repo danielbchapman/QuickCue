@@ -1,0 +1,57 @@
+<template name="notesList">
+	<h2>Notes</h2>
+	<div class="table">
+		<div class="row header">
+			<div class="cell">
+				Label
+			</div>
+			<div class="cell">
+				Department
+			</div>
+			<div class="cell">
+				Description
+			</div>
+			<div class="cell">
+				Created
+			</div>
+		</div>
+		<!-- Notes Table -->
+		{{#each notes}}
+			{{>notesItem }}
+		{{/each}}
+	</div>
+</template>
+
+<template name="notesItem">
+	<div class="row stripes">
+		
+		<div class="cell">
+			{{label}}
+		</div>
+		
+		<div class="cell">
+			{{department}}
+		</div>
+		
+		<div class="cell">
+			{{description}}
+		</div>
+		
+		<div class="cell">
+			{{ formatDate(created) }}
+		</div>
+		
+		<div class="cell">
+			<button>X</button>
+		</div>
+	</div>
+</template>
+
+<template name="noteAdd">
+	<form>
+		<input type="text" name="label" placeholder="Label"/>
+		<input type="text" name="description" placeholder="Description"/>
+		<input type="text" name="department" placeholder="Department"/>
+		<input type="submit" value="Add"/>
+	</form>
+</template>

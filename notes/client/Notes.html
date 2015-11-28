@@ -1,0 +1,12 @@
+<template name="Notes">
+	<h1>Notes</h1>
+	{{#unless currentUser}}
+		<h2>Unauthorized</h2>
+		{{> goRegister }}
+	{{/unless}}
+	{{#if currentUser}}
+		{{> noteAdd }}
+		{{> notesList}}
+		
+	{{/if}}
+</template>

@@ -2,7 +2,13 @@
 Router.route('/Register');
 Router.route('/About');
 Router.route("/Account");
+
 Router.route('/CueSheet', { template: 'CueSheet'});
+
+Router.route('/Notes', {
+	name: 'Notes', 
+	template: 'Notes'
+	});
 Router.route('/Instruments');
 Router.route('/', {
 	template: 'Home'

@@ -1,10 +1,20 @@
 
-@body-background : #f00;
-@row-color : #eee;
+@body-background : #fff;
+@primary-color: #0a0;
+@row-color:desaturate(lighten(@primary-color, 40%), 50%);
+@row-color-head:lighten(@primary-color, 30%);
 @row-alt-color : @row-color * 0.5;
 
 body {
-	background: @body-background;
+	background:lighten(@primary-color, 85%);
+}
+
+.header {
+	background-color: @row-color-head
+}
+
+.stripes:nth-child(2n+0) {
+	background-color: @row-color;
 }
 
 /* CSS OLD */

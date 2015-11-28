@@ -12,3 +12,13 @@ Meteor.publish('cueList', function(){
 		'show' : show
 	});
 });
+
+Meteor.publish('notesList', function(){
+	var userId = this.userId;
+	var show = "DEFAULT";
+	
+	return Notes.find({
+		'owner' : userId,
+		'show' : show
+	});
+});

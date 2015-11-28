@@ -31,9 +31,7 @@ Meteor.methods({
 		if(!mongoId){
 			throw "Invalid call, the ID is null or empty";
 		}
-		if(!mongoId){
-			throw "Invalid call, the cue is null or empty";
-		}
+		console.log("[WARNING] this input should be sanitized.");
 		//Update this specific field
 		Cues.update({
 				_id: mongoId, 
