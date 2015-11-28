@@ -1,0 +1,105 @@
+<template name="navigation">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+  
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Quick Cue</a>
+        </div>        
+        <ul class="nav navbar-nav">
+          
+          {{>navRoute route='CueSheet' name='Cue Sheet' }}
+          {{>navRoute route='Notes' name='Notes' }}
+          {{>navRoute route='Instruments' name='Instruments' }}
+          {{>navRoute route='Account' name='Account' }}
+          {{>navRoute route='About' name='About' }}
+          <!--
+          <li class="{{activeRoute 'CueSheet' }}">
+            <a href="{{ pathFor route='CueSheet'}}">Cue Sheet</a>
+          </li>
+          
+          <li>
+            <a href="{{ pathFor route='Notes'}}">Notes</a>
+          </li>
+          <li>
+            <a href="{{ pathFor route='Instruments'}}">Instruments</a>
+          </li>
+
+          <li>
+            <a href="{{ pathFor route='Account'}}">Account</a>
+          </li>
+          <li>
+            <a href="{{ pathFor route='About'}}">About</a>
+          </li>
+          -->
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reports <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="{{ pathFor route='PrintCues'}}">Cue Sheet</a>
+              </li>
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </li>
+          
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Take Note<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li>
+                <form name="quick-note">
+                  <div class="form-group">
+                    <label for="label">Note</label>
+                    <input name="label" type="text" class="form-control" placeholder="Note" />
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="label">Description</label>
+                    <textarea name="description" type="text" class="form-control" placeholder="Note">
+                    </textarea>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="department">Department</label>
+                    {{> departmentList }}
+                    
+                    <button type="submit" class="btn btn-primary">Add Note</button>
+                  </div>
+                </form>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            {{> loginButtons }}
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+  </nav>
+</template>
+
+<template name="goRegister">
+  <div class="alert">
+    <h2>Please register an account</h2>
+    <a href="/Account/">Register Here</a>
+  </div>
+</template>
+
+<template name="navRoute"> 
+  <li class="{{ activeRoute route }}">
+    <a href="{{ pathFor route=route }}">{{name}}</a>
+  </li>  
+</template>

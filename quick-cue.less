@@ -5,6 +5,9 @@
 @row-color-head:lighten(@primary-color, 30%);
 @row-alt-color : @row-color * 0.5;
 
+//Layout
+@nav-bar-offset : 70px;
+
 body {
 	background:lighten(@primary-color, 85%);
 }
@@ -66,11 +69,6 @@ body {
 	width: 200px;
 }
 
-/* Table Style */
-.cue-stack {
-	
-}
-
 .cue-note {
 	display: none;
 }
@@ -82,10 +80,6 @@ body {
 	vertical-align: top;
 }
 
-input[type=text] {
-	background-color: rgba(0,0,0,0);
-}
-
-.cue-stack .row:nth-child(2n+3){
-	background-color: #eee;
+body {
+	padding-top: @nav-bar-offset	
 }

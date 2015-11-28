@@ -8,9 +8,15 @@
 		{{> cueControls }}
 		<label>Total Cues: {{cueCount}}</label>
 		<!-- Confirm Delete Functionality -->
-		<div style="background: orange;">
-			<input id="no-confirm" type="checkbox" checked="{{noConfirm}}" />
-			<label for="no-confirm">Confirm Delete</label>
+		<div class="checkbox">
+			<label>
+				<input id="no-confirm" type="checkbox" checked="{{noConfirm}}" />
+				{{#if noConfirm}}
+					Do not confirm delete
+				{{else}}
+					Confirm Delete
+				{{/if}}
+			</label>
   	</div>
 		<div class="cue-stack table cue">
 			{{> cueTableHeader }}
