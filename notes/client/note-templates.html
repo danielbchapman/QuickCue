@@ -14,16 +14,22 @@
 			<div class="cell">
 				Created
 			</div>
+			<div class="cell">
+			</div>
 		</div>
 		<!-- Notes Table -->
 		{{#each notes}}
-			{{>notesItem }}
+				{{>notesItem }}
 		{{/each}}
 	</div>
 </template>
 
+<template name="autoNote">
+	{{> quickForm collection="Notes" id="insertBookForm" type="insert" omitFields="[created, owner, show, completed]"}}
+</template>
+
 <template name="notesItem">
-	<div class="row stripes">
+	<div class="row stripes {{#if completed}} note-complete {{/if}}">
 		
 		<div class="cell">
 			{{label}}
@@ -42,7 +48,17 @@
 		</div>
 		
 		<div class="cell">
-			<button>X</button>
+			{{#if completed}}
+				<button class="btn btn-success complete">Restore</button>
+			{{else}}
+				<button class="btn btn-primary complete">Complete</button>
+			{{/if}}
+		</div>
+		
+		<div class="cell">
+			{{#if completed}}
+				<button class="btn btn-danger crud-d">Delete</button>
+			{{/if}}
 		</div>
 	</div>
 </template>
@@ -54,4 +70,17 @@
 		{{> departmentList }}
 		<input type="submit" value="Add"/>
 	</form>
+</template>
+
+<template name="noteToggle">
+	<div class="well">
+		<label>Notes Toggle:</label>
+		<button class="btn btn-primar toggleShow">
+			{{#if showCompleted}}
+				Show Completed
+			{{else}}
+				Hide Completed
+			{{/if}}
+		</button>
+	</div>
 </template>

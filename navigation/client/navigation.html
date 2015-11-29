@@ -58,7 +58,9 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Take Note<span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li>
-                <form name="quick-note">
+                {{> autoNote }}
+                <!--
+                <form class="navQuickNote">
                   <div class="form-group">
                     <label for="label">Note</label>
                     <input name="label" type="text" class="form-control" placeholder="Note" />
@@ -77,6 +79,7 @@
                     <button type="submit" class="btn btn-primary">Add Note</button>
                   </div>
                 </form>
+                -->
               </li>
             </ul>
           </li>

@@ -4,7 +4,9 @@
 		<h2>Unauthorized</h2>
 		{{> goRegister }}
 	{{/unless}}
+	
 	{{#if currentUser}}
+		{{> noteToggle }}
 		{{> noteAdd }}
 		{{> notesList}}
 		

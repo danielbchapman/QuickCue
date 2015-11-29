@@ -1,10 +1,12 @@
 
 @body-background : #fff;
 @primary-color: #0a0;
+
 @row-color:desaturate(lighten(@primary-color, 40%), 50%);
 @row-color-head:lighten(@primary-color, 30%);
 @row-alt-color : @row-color * 0.5;
 
+@text-color : #000;
 //Layout
 @nav-bar-offset : 70px;
 
@@ -82,4 +84,13 @@ body {
 
 body {
 	padding-top: @nav-bar-offset	
+}
+
+/***********************
+//  NOTES
+***********************/
+
+.note-complete {
+	text-decoration: line-through;
+	color: lighten(@text-color, 50%);
 }

@@ -22,3 +22,6 @@ insecure
 iron:router
 less
 twbs:bootstrap
+aldeed:autoform
+aldeed:simple-schema
+aldeed:collection2
