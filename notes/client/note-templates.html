@@ -25,7 +25,9 @@
 </template>
 
 <template name="autoNote">
-	{{> quickForm collection="Notes" id="insertBookForm" type="insert" omitFields="[created, owner, show, completed]"}}
+	<div style="padding:20px; width: 350px;">		
+		{{> quickForm collection="Notes" id="insertBookForm" type="insert" omitFields="owner, created, show, completed"}}
+	</div>
 </template>
 
 <template name="notesItem">

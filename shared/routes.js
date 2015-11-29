@@ -19,6 +19,11 @@ Router.route('/Print/CueSheet', {
 	name: 'PrintCues',
 	template: 'PrintCues'
 });
+
+Router.route('/Print/Notes', {
+	name: 'PrintNotes',
+	template: 'PrintNotes'
+});
 console.log("registered routes");
 
 //Router Defaults

@@ -1,0 +1,31 @@
+<!-- REPORTING -->
+<template name="PrintNotes">
+	<div class="report">
+		
+		<h2>Outstanding Notes</h2>
+		{{#if departments count gt 0}}
+			{{#each departments}}
+				<h3>{{this}}</h3>
+				{{> PrintNoteDetail department=this}}
+			{{/each}}
+		{{/if}}
+		<h2>Completed Notes</h2>
+	</div>
+	
+</template>
+
+<template name="PrintNoteDetail">
+	{{#each noteForDepartment department true}}
+			<label>{{label}}</label>
+			<label class="time">{{created}}</label>
+			<p>{{description}}</p>
+		{{label}}
+	{{/each}}
+	
+	{{#each noteForDepartment department false}}
+			<label class="note-complete">{{label}}</label>
+			<label class="time">{{created}}</label>
+			<p>{{description}}</p>
+		{{label}}
+	{{/each}}
+</template>
