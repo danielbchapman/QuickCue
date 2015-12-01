@@ -1,19 +1,11 @@
 
 Template.PrintNotes.helpers({
-	'noteForDepartment' : function(dept, complete){
-		return Notes.find({	
-				completed : complete, 
-				department : dept
-			}, { 
-				sort: {
-					department : 1,
-					created: 1
-			}
-		});
-	},
 	'departments' : function(){
 		//FIXME make this a dynamic service
 		return ['Lighting', 'Scenery', 'Sound', 'Costumes', 'Management', 'Administrative', 'Private'];
+	},
+	'totalNotes' : function(){
+		return Notes.find().count();
 	},
 	'notesByDepartment' : function(){
 		
@@ -55,15 +47,45 @@ Template.PrintNotes.helpers({
 Template.PrintNotes.events();
 
 Template.PrintNoteDetail.helpers({
-	'noteForDepartment' : function(dept, complete){
-		return Notes.find({	
-				department : dept,
-				completed : complete
+	'logIt' : function(x){
+		console.log("Log it->" + x);
+		// if(x){
+		// 	for(var u in x){
+		// 		console.log('[' + u + ']' + x[u]);		
+		// 	}	
+		// }
+		console.log(x);
+	},
+	//Returns an object of name, complete[], incomplete[], total
+	'notesForDepartment' : function(dept){
+		var data = Notes.find({	
+				department : dept
 			}, { 
 				sort: {
 					department : 1,
 					created: 1
 			}
-		});
+		}).fetch();
+		
+		console.log(data + " dept " + " length:" + data.length);
+		var notesExist = data.length > 0;
+		
+		var result = {
+			name : dept,
+			complete : [],
+			incomplete : [],
+			total : data.length,
+			hasNotes : notesExist
+		}
+		
+		for(var x in data){
+			if(data[x].completed){
+				result.complete.push(data[x]);
+			} else {
+				result.incomplete.push(data[x]);
+			}
+		}
+		
+		return result;
 	},
 });

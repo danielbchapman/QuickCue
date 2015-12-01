@@ -1,31 +1,39 @@
 <!-- REPORTING -->
 <template name="PrintNotes">
 	<div class="report">
-		
-		<h2>Outstanding Notes</h2>
-		{{#if departments count gt 0}}
-			{{#each departments}}
-				<h3>{{this}}</h3>
-				{{> PrintNoteDetail department=this}}
-			{{/each}}
+		{{#if totalNotes gt 0}}
+			{{#if departments count gt 0}}
+				{{#each departments}}
+					{{> PrintNoteDetail department=this}}
+				{{/each}}
+			{{/if}}
+		{{else}}
+			<div class="well">
+				<h3 class="info">There are no notes</h3>
+				<p class="info">
+					There are no notes currently outstanding. 
+				</p>
+			</div>
 		{{/if}}
-		<h2>Completed Notes</h2>
 	</div>
-	
 </template>
 
 <template name="PrintNoteDetail">
-	{{#each noteForDepartment department true}}
-			<label>{{label}}</label>
-			<label class="time">{{created}}</label>
-			<p>{{description}}</p>
-		{{label}}
-	{{/each}}
-	
-	{{#each noteForDepartment department false}}
-			<label class="note-complete">{{label}}</label>
-			<label class="time">{{created}}</label>
-			<p>{{description}}</p>
-		{{label}}
-	{{/each}}
+	{{#with notesForDepartment department false}}
+		{{#if hasNotes}}
+			<h3 class="info">{{this.name}} ({{this.incomplete.length}})</h3>
+			<hr />
+			{{#each this.incomplete}}
+				<label>{{label}}</label>
+				<label class="time">{{created}}</label>
+				<p>{{description}}</p>			
+			{{/each}}
+			
+			{{#each this.complete}}
+				<label class="note-complete">{{label}}</label>
+				<label class="time note-complete">{{created}}</label>
+				<p class="note-complete">{{description}}</p>			
+			{{/each}}
+		{{/if}}
+	{{/with}}
 </template>

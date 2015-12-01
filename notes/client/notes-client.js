@@ -68,7 +68,7 @@ Template.notesItem.helpers({
 				'Saturday'
 			];
 			if(typeof date.getMonth === 'function'){
-					return (days[date.getDay()] + " " + date.getYear()+1900) + "-" + date.getMonth() + "-" + date.getDate();
+					return days[date.getDay()] + " " + (date.getYear()+1900) + "-" + date.getMonth() + "-" + date.getDate();
 			} else {
 				return defautReturn;//intentially empty
 			}
