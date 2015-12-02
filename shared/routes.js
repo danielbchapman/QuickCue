@@ -14,6 +14,9 @@ Router.route('/', {
 	template: 'Home'
 });
 
+Router.route('/Home', {
+	template: 'Home'
+});
 //Printing
 Router.route('/Print/CueSheet', {
 	name: 'PrintCues',

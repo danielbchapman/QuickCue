@@ -92,15 +92,21 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          
+          {{#unless signedIn}}
           <li>
-            XXXXXXXXX
+            <a href="{{ pathFor route='Account' }}">Sign in</a>  
           </li>
+          {{/unless}}
+          
         </ul>
       </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
   </nav>
   <div class="container">
-    {{> loginButtons }}
+    {{#if signedIn}}
+      Welcome {{email}} <a href="#" class="signout" style="display:inline-block">sign out</a>
+    {{/if}}
   </div>
 </template>
 

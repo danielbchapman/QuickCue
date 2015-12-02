@@ -29,5 +29,31 @@ Template.navigation.events({
 		console.log(obj);
 		Meteor.call('noteAdd', obj);
 		$(e.target).closest('form').find("input[type=text], textarea, input[type=password]").val("");
+	}, "click .signout" : function(e){
+		e.preventDefault();
+		Meteor.logout();
+		Router.go('Account');
+	}
+	
+});
+
+Template.navigation.helpers({
+	'signedIn' : function(){
+		console.log("Signed in called: " + Meteor.userId());
+		if(Meteor.userId()){
+			return true;
+		} else {
+			return false;
+		}
+	},
+	'email' : function(){
+		if(Meteor.user()){
+			if(Meteor.user().emails[0]){
+				if(Meteor.user().emails[0].address){
+					return Meteor.user().emails[0].address;
+				}
+			}
+		}
+		return "unknown";
 	}
 });
