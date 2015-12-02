@@ -1,6 +1,18 @@
 <template name="Account">
 	<h1>Account Page</h1>
-	<p>
-		This page is not implemented! 
-	</p>
+	{{#if Meteor.userId }}
+		<label>Welcome {{ Meteor.username }}</label>
+		<p>
+			This page is not implemented! 
+		</p>
+	{{else}}
+		
+		<div class="row">
+			<div class="col-md-4">
+				{{> loginForm }}
+			</div>
+		</div>
+		
+		<a href="{{pathFor route='Register'}}">Register</a>
+	{{/if}}
 </template>

@@ -1,20 +1,20 @@
 <template name="notesList">
 	<h2>Notes</h2>
 	<div class="table">
-		<div class="row header">
-			<div class="cell">
+		<div class="table-row header">
+			<div class="table-ell">
 				<label>Label</label>
 			</div>
-			<div class="cell">
+			<div class="table-cell">
 				<label>Department</label>
 			</div>
-			<div class="cell">
+			<div class="table-cell">
 				<label>Description</label>
 			</div>
-			<div class="cell">
+			<div class="table-cell">
 				<label>Created</label>
 			</div>
-			<div class="cell">
+			<div class="table-cell">
 			</div>
 		</div>
 		<!-- Notes Table -->
@@ -31,25 +31,25 @@
 </template>
 
 <template name="notesItem">
-	<div class="row stripes {{#if completed}} note-complete {{/if}}">
+	<div class="table-row stripes {{#if completed}} note-complete {{/if}}">
 		
-		<div class="cell">
+		<div class="table-cell">
 			{{label}}
 		</div>
 		
-		<div class="cell">
+		<div class="table-cell">
 			{{department}}
 		</div>
 		
-		<div class="cell">
+		<div class="table-cell">
 			{{description}}
 		</div>
 		
-		<div class="cell">
+		<div class="table-cell">
 			{{ formatDate(created) }}
 		</div>
 		
-		<div class="cell">
+		<div class="table-cell">
 			{{#if completed}}
 				<button class="btn btn-success complete">Restore</button>
 			{{else}}
@@ -57,7 +57,7 @@
 			{{/if}}
 		</div>
 		
-		<div class="cell">
+		<div class="table-cell">
 			{{#if completed}}
 				<button class="btn btn-danger crud-d">Delete</button>
 			{{/if}}

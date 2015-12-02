@@ -1,12 +1,12 @@
 <template name="cueTableHeader">
-  <div class="row">
-    <div class="cell">Cue</div>
-    <div class="cell">Label</div>
-    <div class="cell">Description</div>
-    <div class="cell">Placement</div>
-    <div class="cell">Page</div>
-    <div class="cell"></div>
-    <div class="cell"></div>
+  <div class="table-row">
+    <div class="table-cell">Cue</div>
+    <div class="table-cell">Label</div>
+    <div class="table-cell">Description</div>
+    <div class="table-cell">Placement</div>
+    <div class="table-cell">Page</div>
+    <div class="table-cell"></div>
+    <div class="table-cell"></div>
   </div>
 </template>
 
@@ -15,42 +15,42 @@
 </template>
 
 <template name="cueItemInner">
-  <div class="row">
-    <div class="cell cue-number">
-      <input type="text" value="{{number}}" name="cue-number" />
+  <div class="table-row spreadsheet">
+    <div class="table-cell cue-number">
+      <input type="text" value="{{number}}" name="cue-number" class="spreadsheet" />
     </div>
     
-    <div class="cell cue-label">
-      <input type="text" value="{{label}}" name="cue-label" />
+    <div class="table-cell cue-label">
+      <input type="text" value="{{label}}" name="cue-label" class="spreadsheet"/>
     </div>
 
-    <div class="cell cue-description">
-      <input type="text" value="{{description}}" name="cue-description" />
+    <div class="table-cell cue-description">
+      <input type="text" value="{{description}}" name="cue-description" class="spreadsheet"/>
     </div>
 
-    <div class="cell cue-placement">
-      <input type="text" value="{{placement}}" name="cue-placementr" />
+    <div class="table-cell cue-placement">
+      <input type="text" value="{{placement}}" name="cue-placementr" class="spreadsheet"/>
     </div>
         
-    <div class="cell cue-page">
-      <input type="text" value="{{page}}" name="cue-page" />
+    <div class="table-cell cue-page">
+      <input type="text" value="{{page}}" name="cue-page" class="spreadsheet"/>
     </div>
     
-    <div class="cell cue-controls">
+    <div class="table-cell cue-controls">
       <input type="submit" style="display:none;" />
-      <button class="addNote btn btn-default">N</button>
+      <button class="addNote btn btn-default btn-sm">N</button>
       <!--
       <button class="addWorkNote btn btn-default">W</button>
       <button class="addFocusNote btn btn-default">F</button>
       -->
       {{#unless confirmDeletes}}
         {{#if remove}}
-          <button class="restore  btn btn-success">R</button>
+          <button class="restore  btn btn-success btn-sm">R</button>
         {{else}}
-          <button class="remove  btn btn-warning">R</button>
+          <button class="remove  btn btn-warning btn-sm">R</button>
         {{/if}}
       {{else}}
-        <button class="delete  btn btn-danger">Delete</button>  
+        <button class="delete  btn btn-danger btn-sm">Delete</button>  
       {{/unless}}
     </div>
 

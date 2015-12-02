@@ -76,6 +76,9 @@ Template.CueSheet.events({
 	"click #no-confirm" : function(event){
 		Session.set("NO_CONFIRM", !Session.get("NO_CONFIRM"));
 		console.log("NO CONFRIM = " + Session.get("NO_CONFIRM"));
+	},
+	"click input.spreadsheet" : function(e){
+		$(e.target).select();
 	}
 });
 //Helpers

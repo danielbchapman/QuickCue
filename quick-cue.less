@@ -10,6 +10,7 @@
 //Layout
 @nav-bar-offset : 70px;
 
+@spreadsheet-padding: 2px;
 body {
 	//background:lighten(@primary-color, 85%);
 }
@@ -41,11 +42,11 @@ body {
 	display: table;
 }
 
-.row {
+.table-row {
 	display: table-row;
 }
 
-.cell {
+.table-cell {
 	display: table-cell;
 }
 
@@ -93,4 +94,20 @@ body {
 .note-complete {
 	text-decoration: line-through;
 	color: lighten(@text-color, 50%);
+}
+
+/***********************
+// SPREADSHEET STYLES
+***********************/
+.spreadsheet .table-row {
+	padding-top: 4px;
+}
+.spreadsheet input {
+	background: #222;
+	border: none;
+	margin: @spreadsheet-padding @spreadsheet-padding @spreadsheet-padding @spreadsheet-padding;
+	
+	&:hover {
+		cursor: pointer;
+	}
 }

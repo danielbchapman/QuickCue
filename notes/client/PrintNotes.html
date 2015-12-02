@@ -21,18 +21,26 @@
 <template name="PrintNoteDetail">
 	{{#with notesForDepartment department false}}
 		{{#if hasNotes}}
-			<h3 class="info">{{this.name}} ({{this.incomplete.length}})</h3>
+			<h4 class="info">{{this.name}} ({{this.incomplete.length}})</h4>
 			<hr />
 			{{#each this.incomplete}}
-				<label>{{label}}</label>
-				<label class="time">{{created}}</label>
-				<p>{{description}}</p>			
+				<note>
+					<label>{{label}}</label>
+					<timestamp>{{created}}</timestamp>
+					<description>
+						{{description}}
+					</description>
+				</note>			
 			{{/each}}
 			
 			{{#each this.complete}}
-				<label class="note-complete">{{label}}</label>
-				<label class="time note-complete">{{created}}</label>
-				<p class="note-complete">{{description}}</p>			
+				<note class="note-complete">
+					<label>{{label}}</label>
+					<timestamp>{{created}}</timestamp>
+					<description>
+						{{description}}
+					</description>
+				</note>			
 			{{/each}}
 		{{/if}}
 	{{/with}}

@@ -1,0 +1,30 @@
+@outline : #666;
+@border-thickness : 1px;
+@font-color: #ccc;
+@font-color-alt: darken( #0CF, 20%);
+
+note {
+	display: block;
+	border-bottom: @border-thickness @outline solid;
+	color: @font-color;
+	
+	label {
+		display: block;
+		font-weight: bold;
+		font-size: 1.5em;
+	} 
+	
+	timestamp {
+		color: @font-color-alt;
+		display: block;
+		font-weight: normal;
+		font-family: monospace;
+		font-size: .9em;
+	}
+	
+	description {
+		font-weight: normal;
+		font-family: serif;
+		display: block;
+	}
+}
