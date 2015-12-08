@@ -1,5 +1,19 @@
 <template name="notesList">
-	<h2>Notes</h2>
+	<div class="row">
+		<div class="col-md-1">.col-md-1</div>
+		<div class="col-md-1">.col-md-1</div>
+		<div class="col-md-1">.col-md-1</div>
+		<div class="col-md-1">.col-md-1</div>
+		<div class="col-md-1">.col-md-1</div>
+		<div class="col-md-1">.col-md-1</div>
+		<div class="col-md-1">.col-md-1</div>
+		<div class="col-md-1">.col-md-1</div>
+		<div class="col-md-1">.col-md-1</div>
+		<div class="col-md-1">.col-md-1</div>
+		<div class="col-md-1">.col-md-1</div>
+		<div class="col-md-1">.col-md-1</div>
+	</div>
+	
 	<div class="table">
 		<div class="table-row header">
 			<div class="table-ell">
@@ -17,9 +31,11 @@
 			<div class="table-cell">
 			</div>
 		</div>
-		<!-- Notes Table -->
+	</div>
+	<!-- Notes Table -->
+	<div class="container">	
 		{{#each notes}}
-				{{>notesItem }}
+			{{>notesItem }}
 		{{/each}}
 	</div>
 </template>
@@ -31,36 +47,42 @@
 </template>
 
 <template name="notesItem">
-	<div class="table-row stripes {{#if completed}} note-complete {{/if}}">
+	<div class="note {{#if completed}} note-complete {{/if}} row">
 		
-		<div class="table-cell">
-			{{label}}
+		<div class="col-xs-12 col-md-4">
+			<div class="row">
+				<div class="col-xs-4">
+					{{department}}
+				</div>
+				
+				<div class="col-xs-4">
+					{{ formatDate(created) }}
+				</div>
+				
+				<div class="col-xs-4">
+					{{label}}
+				</div>
+			</div>
 		</div>
 		
-		<div class="table-cell">
-			{{department}}
-		</div>
-		
-		<div class="table-cell">
+		<div class="col-xs-12 col-md-4">
 			{{description}}
 		</div>
 		
-		<div class="table-cell">
-			{{ formatDate(created) }}
-		</div>
-		
-		<div class="table-cell">
-			{{#if completed}}
-				<button class="btn btn-success complete">Restore</button>
-			{{else}}
-				<button class="btn btn-primary complete">Complete</button>
-			{{/if}}
-		</div>
-		
-		<div class="table-cell">
-			{{#if completed}}
-				<button class="btn btn-danger crud-d">Delete</button>
-			{{/if}}
+		<div class="col-xs-12 col-md-2">
+			<div class="col-md-1">
+				{{#if completed}}
+					<button class="btn btn-success complete">Restore</button>
+				{{else}}
+					<button class="btn btn-primary complete">Complete</button>
+				{{/if}}
+			</div>
+			
+			<div class="col-md-1">
+				{{#if completed}}
+					<button class="btn btn-danger crud-d">Delete</button>
+				{{/if}}
+			</div>	
 		</div>
 	</div>
 </template>

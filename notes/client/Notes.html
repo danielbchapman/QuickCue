@@ -1,13 +1,29 @@
 <template name="Notes">
-	<h1>Notes</h1>
-	{{#unless currentUser}}
-		<h2>Unauthorized</h2>
-		{{> goRegister }}
-	{{/unless}}
+	<div class="row">
+		<div class="col-md-8">
+			<h1>Notes</h1>
+		</div>
+		<div class="col-md-4">
+			{{#unless currentUser}}
+				<h2>Unauthorized</h2>
+				{{> goRegister }}
+			{{/unless}}
+		</div>
+	</div>
 	
 	{{#if currentUser}}
-		{{> noteToggle }}
-		{{> noteAdd }}
+		<div class="row">
+			<div class="col-md-12">
+				{{> noteToggle }}
+			</div>	
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12">
+				{{> noteAdd }}
+			</div>	
+		</div>
+		
 		{{> notesList}}
 		
 	{{/if}}

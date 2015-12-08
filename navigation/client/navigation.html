@@ -1,10 +1,7 @@
 <template name="navigation">
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
-  
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+  <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -12,102 +9,107 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Quick Cue</a>
-        </div>        
-        <ul class="nav navbar-nav">
+          <a class="navbar-brand" href="/About">Quick Cue</a>
+        </div>
+        
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            {{#if signedIn}}
+              {{>navRoute route='CueSheet' name='Cue Sheet' }}
+              {{>navRoute route='Instruments' name='Instruments' }}
+              {{>navRoute route='Notes' name='Notes' }}
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Actions <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#autoNote">
+                      <span class="glyphicon glyphicon-list-alt"></span>
+                      Quick Note
+                    </a>
+                </li>
+                <li class="disabled">                 
+                  <a href="#">
+                    <span class="glyphicon glyphicon-open"></span>
+                    Change Show
+                  </a>
+                </li>
+              </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  Reports <span class="caret"></span>
+                </a>
+                
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="{{ pathFor route='PrintCues'}}">
+                      <span class="glyphicon glyphicon-print"></span>
+                      Cue Sheet 
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{ pathFor route='PrintNotes'}}">
+                      <span class="glyphicon glyphicon-print"></span>
+                      Notes by Department
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            {{/if}}
+          </ul>
           
-          {{>navRoute route='CueSheet' name='Cue Sheet' }}
-          {{>navRoute route='Notes' name='Notes' }}
-          {{>navRoute route='Instruments' name='Instruments' }}
-          {{>navRoute route='Account' name='Account' }}
-          {{>navRoute route='About' name='About' }}
-          <!--
-          <li class="{{activeRoute 'CueSheet' }}">
-            <a href="{{ pathFor route='CueSheet'}}">Cue Sheet</a>
-          </li>
-          
-          <li>
-            <a href="{{ pathFor route='Notes'}}">Notes</a>
-          </li>
-          <li>
-            <a href="{{ pathFor route='Instruments'}}">Instruments</a>
-          </li>
+          <ul class="nav navbar-nav navbar-right">   
+            {{#unless signedIn}}
+              <li>
+                <a href="{{ pathFor route='Account' }}">Sign in</a>  
+              </li>
+            {{else}}
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <span class="glyphicon glyphicon-user"></span>
+                  {{email}}  
+                  <span class="caret"></span>
+                </a>
+                
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="#" class="signout">
+                    Sign Out
+                    <span class="glyphicon glyphicon-log-out"></span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            {{/unless}}
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+  <div id="autoNote" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        
+        <div class="modal-header">
+          <h3>Take a Note</h3>
+        </div>
+        
+        <div class="modal-body">
+          {{> autoNote }}
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">
+            Close
+          </button>
 
-          <li>
-            <a href="{{ pathFor route='Account'}}">Account</a>
-          </li>
-          <li>
-            <a href="{{ pathFor route='About'}}">About</a>
-          </li>
-          -->
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reports <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><label>Cues</label></li>
-              <li>
-                <a href="{{ pathFor route='PrintCues'}}">Cue Sheet</a>
-              </li>
-              
-              <li role="separator" class="divider"></li>
-              <li><label>Paperwork</label></li>
-              
-              
-              <li role="separator" class="divider"></li>
-              <li><label>Notes</label></li>
-              
-              <li>
-                <a href="{{ pathFor route='PrintNotes'}}">Notes by Department</a>
-              </li>
-            </ul>
-          </li>
-          
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Take Note<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li>
-                {{> autoNote }}
-                <!--
-                <form class="navQuickNote">
-                  <div class="form-group">
-                    <label for="label">Note</label>
-                    <input name="label" type="text" class="form-control" placeholder="Note" />
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="label">Description</label>
-                    <textarea name="description" type="text" class="form-control" placeholder="Note">
-                    </textarea>
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="department">Department</label>
-                    {{> departmentList }}
-                    
-                    <button type="submit" class="btn btn-primary">Add Note</button>
-                  </div>
-                </form>
-                -->
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          
-          {{#unless signedIn}}
-          <li>
-            <a href="{{ pathFor route='Account' }}">Sign in</a>  
-          </li>
-          {{/unless}}
-          
-        </ul>
-      </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-  </nav>
-  <div class="container">
-    {{#if signedIn}}
-      Welcome {{email}} <a href="#" class="signout" style="display:inline-block">sign out</a>
-    {{/if}}
+        </div>
+      </div>  
+    </div>
   </div>
+ 
 </template>
 
 <template name="goRegister">
